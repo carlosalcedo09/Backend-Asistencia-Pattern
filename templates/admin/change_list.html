@@ -1,0 +1,62 @@
+{% extends "admin/change_list.html" %}
+{% load static %}
+
+{% block extrahead %}
+  {{ block.super }}
+
+  {% if request.resolver_match.url_name == "payroll_payroll_changelist" %}
+    <!-- Bootstrap y scripts solo en payroll/payroll -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <link rel="stylesheet" href="{% static 'admin/css/custom.css' %}">
+    <script src="{% static 'admin/js/payroll.js' %}"></script>
+  {% endif %}
+{% endblock %}
+
+{% block content %}
+  {{ block.super }}
+
+  {% if request.resolver_match.url_name == "payroll_payroll_changelist" %}
+    <!-- Modal solo visible en admin/payroll/payroll/ -->
+    <div class="modal fade"  id="budgetModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog modal-xl">
+        <div class="modal-content" style="width: 110% !important;">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="staticBackdropLabel">Vista previa del presupuesto de nómina generado</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+          </div>
+
+          <div class="modal-body mt-2" id="modal-content">
+            <!-- Contenido dinámico AJAX aquí -->
+          </div>
+
+          <div class="modal-body"  id="table-budget">
+            <div class="table-responsive">
+              <table class="table table-sm table-modal">
+                <thead class="table-secondary">
+                  <tr>
+                    <th>ID</th>
+                    <th>DNI</th>
+                    <th>Área</th>
+                    <th>Cargo</th>
+                    <th>Fecha de ingreso</th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+             <button type="button" class="btn btn-danger" id="confirm-payroll-btn" data-id="">
+              Confirmar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endif %}
+{% endblock %}
