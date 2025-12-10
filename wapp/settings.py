@@ -177,7 +177,8 @@ USE_X_FORWARDED_FOR = True
 
 
 
-STATIC_ROOT = os.getenv('STATIC_ROOT')
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
