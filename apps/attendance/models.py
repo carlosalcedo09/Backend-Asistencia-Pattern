@@ -42,7 +42,7 @@ class Justification(BaseModel):
 class AttendanceMarking(BaseModel):
     attendance = models.ForeignKey(Attendance, db_index=True, verbose_name='Asistencia', related_name='Asistencia', on_delete=models.CASCADE, null=True)
     hour= models.TimeField(verbose_name='Hora de marcación', null=True,blank=True)
-    observation = models.CharField ('Observaciones', help_text="Detallar si existe alguna observación", null=True,blank=True)
+    observation = models.CharField ('Observaciones',  max_length=500, help_text="Detallar si existe alguna observación", null=True,blank=True)
     state = models.CharField(verbose_name="Estado", null=True, blank=True, default=None, max_length=30, choices=StatusMarkingChoices.choices)
     type_marking = models.ForeignKey (Type_marking, db_index=True, verbose_name='Tipo de Marcación', help_text= "Establecer el tipo de marcación", related_name='tipo_marcacion', on_delete=models.CASCADE, null=True)
 
