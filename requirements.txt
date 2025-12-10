@@ -47,7 +47,7 @@ packaging==24.1
 pandas==2.2.3
 phonenumbers==8.13.55
 pillow==10.4.0
-psycopg2-binary==2.9.9
+psycopg[binary]
 pycparser==2.22
 pydyf==0.11.0
 pyHanko==0.29.1
