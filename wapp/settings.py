@@ -98,7 +98,7 @@ STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage"
 
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000","http://localhost:5173",
+    "http://localhost:3000","http://localhost:5173","https://backend-asistencia-pattern.onrender.com"
 ]
 
 ROOT_URLCONF = 'wapp.urls'
