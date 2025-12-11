@@ -34,12 +34,12 @@ BASE_APPS = [
     "unfold.contrib.import_export",
     "unfold.contrib.forms",
     #'multi_captcha_admin',
+    "django.contrib.staticfiles",
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
     'django_better_admin_arrayfield',
     
 ]
@@ -85,12 +85,17 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     #'debug_toolbar.middleware.DebugToolbarMiddleware',
     'wapp.middleware.CustomPermissionMiddleware',
     'simple_history.middleware.HistoryRequestMiddleware',
     'apps.base.middleware.CurrentEmployeeMiddleware',
     'corsheaders.middleware.CorsMiddleware',
 ]
+
+
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000","http://localhost:5173",
@@ -119,21 +124,21 @@ WSGI_APPLICATION = 'wapp.wsgi.application'
 
 
 
-DATABASES = {
-    'default': dj_database_url.config(default=os.getenv("DATABASE_URL"))
-}
-
 #DATABASES = {
-#    'default': {
-#        'ENGINE': os.getenv('DATABASE_ENGINE'),
-#        'NAME': os.getenv('DATABASE_NAME'),
-#        'USER': os.getenv('DATABASE_USER'),
-#        'PASSWORD': os.getenv('DATABASE_PASSWORD'),
- #       'HOST': os.getenv('DATABASE_HOST'),
- #       'PORT': int(os.getenv('DATABASE_PORT')),
- #       'CONN_MAX_AGE': 300
-  #  }
+#    'default': dj_database_url.config(default=os.getenv("DATABASE_URL"))
 #}
+
+DATABASES = {
+    'default': {
+        'ENGINE': os.getenv('DATABASE_ENGINE'),
+        'NAME': os.getenv('DATABASE_NAME'),
+        'USER': os.getenv('DATABASE_USER'),
+        'PASSWORD': os.getenv('DATABASE_PASSWORD'),
+        'HOST': os.getenv('DATABASE_HOST'),
+        'PORT': int(os.getenv('DATABASE_PORT')),
+        'CONN_MAX_AGE': 300
+    }
+}
 
 
 # Password validation
