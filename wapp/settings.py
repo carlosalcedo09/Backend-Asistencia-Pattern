@@ -94,7 +94,7 @@ MIDDLEWARE = [
 ]
 
 
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage"
 
 
 CORS_ALLOWED_ORIGINS = [
